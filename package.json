@@ -9,6 +9,8 @@
   "author": "Wynn Blevins",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
+    "decision-tree": "^0.3.1",
     "dotenv": "^8.1.0",
     "express": "^4.17.1"
   }

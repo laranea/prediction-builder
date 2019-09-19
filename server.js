@@ -1,10 +1,10 @@
-require('dotenv').config()
-
-const express = require('express')
-const bodyParser = require('body-parser')
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
 const predictionService = require('./services/stock-prediction-service.js');
-const app = express()
+const axios = require('axios');
 const PORT = process.env.PORT || 3001;
+let app = express();
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +18,7 @@ app.use(function(err, req, res, next) {
 })
 
 // Define API routes here
-require('./controllers/stock-prediction-controller.js')(app, predictionService);
+app = require('./controllers/stock-prediction-controller.js')(app, predictionService, axios);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
