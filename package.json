@@ -12,6 +12,8 @@
     "axios": "^0.19.0",
     "decision-tree": "^0.3.1",
     "dotenv": "^8.1.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongodb": "^2.2.33"
   }
 }
