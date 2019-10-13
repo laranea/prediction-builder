@@ -2,9 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const CircularJSON = require('circular-json');
 const predictionService = require('./services/stock-prediction-service.js');
 const stockDataService = require('./services/stock-data-service.js');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 let app = express();
 
 // Define middleware here
@@ -22,7 +23,7 @@ app.use(function(err, req, res, next) {
 poll = require('./services/timed-stock-data-service.js')(axios);
 
 // Define API routes here
-app = require('./controllers/stock-prediction-controller.js')(app, predictionService, stockDataService);
+app = require('./controllers/stock-prediction-controller.js')(app, predictionService, stockDataService, CircularJSON);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
